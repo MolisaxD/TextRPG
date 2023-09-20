@@ -19,9 +19,16 @@ public class GameLogic {
     //Variável para determinar se o jogo já começou
     public static boolean isRunning;
     
+    //Encontros aleatórios
+    public static String[] encounters = {"Battle", "Battle", "Battle", "Rest", "Rest"};
+    
+    //Inimigos
+    public static String[] enemies = {"Javali", "Bandido", "Arthropleura", "Verme da Terra", "Golem de Pedra", "Soldado da Resistência", "Agente da Irmandade", "Sparky",
+        "Carnotauro Esqueletal", "Hecatônquiro", ""};
+    
     //Progressão da história
-    public static int place = 0, act;
-    public static String[] places = {"ç", "", "chinelo", "putz"};
+    public static int place = 0, act = 1;
+    public static String[] places = {"Forest", "Enchanted Mountains", "City", "Underground"};
     
     //Método para ler input do usuário
     public static int readInt(String prompt, int userChoices) {
@@ -99,8 +106,50 @@ public class GameLogic {
         gameLoop();
     }
     
+    //Método para checar ato
+    public static void checkAct() {
+        if(player.xp >= 10 && act == 1) {
+            //Incrementar ato e lugar
+            act = 2;
+            place = 1;
+            
+            //História
+            Story.printFirstActOutro();
+            
+            //Escolher equipamento novo
+            player.chooseItem();
+            
+            //História
+            Story.printSecondActIntro();
+        } else if(player.xp >= 50 && act == 2) {
+            act = 3;
+            place = 2;
+            
+            Story.printSecondActOutro();
+            
+            player.chooseItem();
+            
+            Story.printThirdActIntro();
+        } else if(player.xp >= 100 && act == 3) {
+            act = 4;
+            place = 3;
+            
+            Story.printThirdActOutro();
+            
+            player.chooseItem();
+            
+            Story.printFourthActIntro();
+        }
+    }
+    
     //Método para continuar a jornada
-    private static void continueJourney() {
+    public static void continueJourney() {
+        //Checar o ato atual
+        checkAct();
+        //Checar se é o último ato
+        if(act != 4) {
+            randomEncounter();
+        }
         
     }
     
@@ -126,7 +175,7 @@ public class GameLogic {
     //Método para definir o menu
     public static void printMenu() {
         clearConsole();
-        printHeading("MENU");
+        printHeading(places[place]);
         System.out.println("Escolha uma ação:");
         printSeparator(20);
         System.out.println("1) Continue sua jornada");
@@ -135,7 +184,7 @@ public class GameLogic {
     }
     
     //Loop principal
-    private static void gameLoop() {
+    public static void gameLoop() {
         while(isRunning) {
             printMenu();
             int input = readInt("->", 3);

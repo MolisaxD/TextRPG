@@ -13,8 +13,8 @@ public class Player extends Character {
     
     public int numAtkUpgrades, numDefUpgrades;
     
-    public String[] atkUpgrades = {"Boomerang", "Hunting Horn", "Sacred Candle", "Dragon Tooth"};
-    public String[] defUpgrades = {"Bone Armor", "Chainmail", "Holy Bible", "Plot Armor"};
+    public String[] atkUpgrades = {"Boomerang", "Trompa de Caça", "Vela Santa", "Dente de Dragão"};
+    public String[] defUpgrades = {"Armadura de Ossos", "Cota de Malha", "Pergaminho Sagrado", "União"};
 
     public Player(String name) {
         super(name, 100, 0);
@@ -35,7 +35,7 @@ public class Player extends Character {
         return 0;
     }
 
-    private void chooseItem() {
+    public void chooseItem() {
         GameLogic.clearConsole();
         GameLogic.printHeading("Escolha um item:");
         System.out.println("1)" + atkUpgrades[numAtkUpgrades]);
