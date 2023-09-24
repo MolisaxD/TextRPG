@@ -27,63 +27,77 @@ public class Story {
     
     public static void printFirstActIntro() {
         GameLogic.clearConsole();
-        GameLogic.printHeading("ACT I Intro");
+        GameLogic.printHeading("ATO I - Introdução");
         System.out.println("");
         GameLogic.anythingToContinue();
     }
     
     public static void printFirstActOutro() {
         GameLogic.clearConsole();
-        GameLogic.printHeading("ACT I Outro");
+        GameLogic.printHeading("ATO I - Completo");
         System.out.println("");
         GameLogic.anythingToContinue();
     }
     
     public static void printSecondActIntro() {
         GameLogic.clearConsole();
-        GameLogic.printHeading("ACT II Intro");
+        GameLogic.printHeading("ATO II - Introdução");
         System.out.println("");
         GameLogic.anythingToContinue();
     }
     
     public static void printSecondActOutro() {
         GameLogic.clearConsole();
-        GameLogic.printHeading("ACT II Outro");
+        GameLogic.printHeading("ATO II - Completo");
         System.out.println("");
         GameLogic.anythingToContinue();
     }
     
     public static void printThirdActIntro() {
         GameLogic.clearConsole();
-        GameLogic.printHeading("ACT III Intro");
+        GameLogic.printHeading("ATO III - Introdução");
         System.out.println("");
         GameLogic.anythingToContinue();
     }
     
     public static void printThirdActOutro() {
         GameLogic.clearConsole();
-        GameLogic.printHeading("ACT III Outro");
+        GameLogic.printHeading("ATO III Completo");
         System.out.println("");
         GameLogic.anythingToContinue();
     }
     
     public static void printFourthActIntro() {
         GameLogic.clearConsole();
-        GameLogic.printHeading("ACT IV Intro");
+        GameLogic.printHeading("ATO IV Introdução");
         System.out.println("");
         GameLogic.anythingToContinue();
     }
     
     public static void printFourthActOutro() {
         GameLogic.clearConsole();
-        GameLogic.printHeading("ACT IV Outro");
+        GameLogic.printHeading("ATO IV Completo");
+        System.out.println("");
+        GameLogic.anythingToContinue();
+    }
+    
+        public static void printFifthActIntro() {
+        GameLogic.clearConsole();
+        GameLogic.printHeading("ATO V Introdução");
+        System.out.println("");
+        GameLogic.anythingToContinue();
+    }
+    
+    public static void printFifthActOutro() {
+        GameLogic.clearConsole();
+        GameLogic.printHeading("ATO V Completo");
         System.out.println("");
         GameLogic.anythingToContinue();
     }
     
     public static void printEnd() {
         GameLogic.clearConsole();
-        GameLogic.printHeading("Ending");
+        GameLogic.printHeading("Final");
         System.out.println("");
         GameLogic.anythingToContinue();
     }

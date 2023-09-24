@@ -10,19 +10,23 @@ package battlesimulator;
  * @author mborges
  */
 public class Enemy extends Character {
+    
+    //Variável para armazenar experiência atual do jogador
+    int playerXp;
 
-    public Enemy(String name) {
-        super(name, 100, 0);
+    public Enemy(String name, int playerXp) {
+        super(name, (int) (Math.random() * playerXp + playerXp/3 + 5), (int) (Math.random() * (playerXp/4 + 2) + 1));
+        this.playerXp = playerXp;
     }
 
     @Override
     public int attack() {
-        return 0;
+        return (int) (Math.random() * (playerXp/4 + 1) + xp/4 + 3);
     }
 
     @Override
     public int defend() {
-        return 0;
+        return (int) (Math.random() * (playerXp/4 + 1) + xp/4 + 3);
     }
     
 }

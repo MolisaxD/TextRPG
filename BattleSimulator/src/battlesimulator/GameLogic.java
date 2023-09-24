@@ -19,12 +19,12 @@ public class GameLogic {
     //Variável para determinar se o jogo já começou
     public static boolean isRunning;
     
-    //Encontros aleatórios
-    public static String[] encounters = {"Battle", "Battle", "Battle", "Rest", "Rest"};
     
     //Inimigos
-    public static String[] enemies = {"Javali", "Bandido", "Arthropleura", "Verme da Terra", "Golem de Pedra", "Soldado da Resistência", "Agente da Irmandade", "Sparky",
-        "Carnotauro Esqueletal", "Hecatônquiro", ""};
+    public static String[] enemies = {"Javali", "Bandido", "Arthropleura",
+        "Verme da Terra", "Águia Gigante", "Golem de Pedra",
+        "Soldado da Resistência", "Agente da Irmandade", "Sparky",
+        "Carnotauro Esqueletal", "Hecatônquiro", "Avatar da Escuridão"};
     
     //Progressão da história
     public static int place = 0, act = 1;
@@ -83,7 +83,7 @@ public class GameLogic {
         clearConsole();
         printSeparator(40);
         printSeparator(30);
-        System.out.println("league of legends");
+        System.out.println("NOME DO JOGO");
         printSeparator(30);
         printSeparator(40);
         anythingToContinue();
@@ -119,6 +119,14 @@ public class GameLogic {
             //Escolher equipamento novo
             player.chooseItem();
             
+            //Novos inimigos para cada ato
+            enemies[0] = "Verme da Terra";
+            enemies[1] = "Água Gigante";
+            enemies[2] = "Golem de Pedra";
+            
+            //Curar o jogador
+            player.hp = player.maxHp;
+            
             //História
             Story.printSecondActIntro();
         } else if(player.xp >= 50 && act == 2) {
@@ -129,6 +137,12 @@ public class GameLogic {
             
             player.chooseItem();
             
+            enemies[0] = "Soldado da Resistência";
+            enemies[1] = "Agente da Irmandade";
+            enemies[2] = "Sparky";
+            
+            player.hp = player.maxHp;
+            
             Story.printThirdActIntro();
         } else if(player.xp >= 100 && act == 3) {
             act = 4;
@@ -138,8 +152,26 @@ public class GameLogic {
             
             player.chooseItem();
             
+            enemies[0] = "Carnotauro Esqueletal";
+            enemies[1] = "Hecatônquiro";
+            enemies[2] = "Avatar da Escuridão";
+            
+            player.hp = player.maxHp;
+            
             Story.printFourthActIntro();
+        } else if(player .xp >= 200 && act == 4) {
+            act = 5;
+            place = 3;
+            
+            //Batalha final
+            //finalBattle();
         }
+    }
+    
+    //Método para calcular um encontro aleatório
+    public static void randomEncounter() {
+        //Número aleatório entre 0 e o tamanho do Array de encontros 
+        int enemy = (int) (Math.random() * enemies.length);
     }
     
     //Método para continuar a jornada
@@ -170,6 +202,31 @@ public class GameLogic {
         }
         
         anythingToContinue();
+    }
+    
+    //Método para criar uma batalha aleatória
+    public static void randomBattle() {
+        clearConsole();
+        printHeading("Você foi emboscado por um ser perturbado. Você deve lutar!!");
+        anythingToContinue();
+        
+        //Criando inimigo novo
+        battle(new Enemy(enemies[(int) (Math.random() * enemies.length)], player.xp));
+    }
+    
+    //O método principal de batalha
+    public static void battle(Enemy enemy) {
+        while(true) {
+            clearConsole();
+            printHeading(enemy.name + "\nHP: " + enemy.hp + "/" + enemy.maxHp);
+            printHeading(player.name + "\nHP: " + player.hp + "/" + player.maxHp);
+            System.out.println("Escolha uma ação:");
+            printSeparator(20);
+            System.out.println("1) Lutar");
+            System.out.println("2) Usar poção de cura");
+            System.out.println("3) Correr");
+            int input = readInt("->", 3);
+        }
     }
     
     //Método para definir o menu

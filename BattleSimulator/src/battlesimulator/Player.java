@@ -11,7 +11,7 @@ package battlesimulator;
  */
 public class Player extends Character {
     
-    public int numAtkUpgrades, numDefUpgrades;
+    public int mana, numAtkUpgrades, numDefUpgrades;
     
     public String[] atkUpgrades = {"Boomerang", "Trompa de Caça", "Vela Santa", "Dente de Dragão"};
     public String[] defUpgrades = {"Armadura de Ossos", "Cota de Malha", "Pergaminho Sagrado", "União"};
@@ -19,6 +19,7 @@ public class Player extends Character {
     public Player(String name) {
         super(name, 100, 0);
         
+        this.mana = 100;
         this.numAtkUpgrades = 0;
         this.numDefUpgrades = 0;
         
@@ -27,12 +28,12 @@ public class Player extends Character {
 
     @Override
     public int attack() {
-        return 0;
+        return (int) (Math.random() * (xp/4 + numAtkUpgrades * 3 + 3) + xp/10 + numAtkUpgrades * 2 + numDefUpgrades + 1);
     }
 
     @Override
     public int defend() {
-        return 0;
+        return (int) (Math.random() * (xp/4 + numDefUpgrades * 3 + 3) + xp/10 + numDefUpgrades * 2 + numDefUpgrades + 1);
     }
 
     public void chooseItem() {
