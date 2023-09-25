@@ -11,7 +11,11 @@ package battlesimulator;
  */
 public class Player extends Character {
     
-    public int mana, numAtkUpgrades, numDefUpgrades;
+    //Atributos extra
+    public int gold, pots;
+    //Itens
+    public int numAtkUpgrades, numDefUpgrades;
+    
     
     public String[] atkUpgrades = {"Boomerang", "Trompa de Caça", "Vela Santa", "Dente de Dragão"};
     public String[] defUpgrades = {"Armadura de Ossos", "Cota de Malha", "Pergaminho Sagrado", "União"};
@@ -19,9 +23,11 @@ public class Player extends Character {
     public Player(String name) {
         super(name, 100, 0);
         
-        this.mana = 100;
         this.numAtkUpgrades = 0;
         this.numDefUpgrades = 0;
+        
+        this.gold = 5;
+        this.pots = 1;
         
         chooseItem();
     }
