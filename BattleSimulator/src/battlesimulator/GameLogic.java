@@ -77,7 +77,6 @@ public class GameLogic {
         boolean nameSet = false;
         String name;
         
-        clearConsole();
         printSeparator(40);
         printSeparator(30);
         System.out.println("Shid & Fard");
@@ -88,6 +87,9 @@ public class GameLogic {
         printSeparator(30);
         anythingToContinue();
         
+        
+        
+        Story.printIntro();
         do {
             clearConsole();
             printHeading("Digite seu nome: ");
@@ -95,7 +97,6 @@ public class GameLogic {
             nameSet = true;
         } while (!nameSet);
         
-        Story.printIntro();
         
         player = new Player(name);
         
@@ -117,7 +118,7 @@ public class GameLogic {
             Story.printFirstActOutro();
             
             //Escolher equipamento novo
-            player.chooseItem();
+            shop();
             
             //Novos inimigos para cada ato
             enemies[0] = "Verme da Terra";
@@ -135,11 +136,11 @@ public class GameLogic {
             
             Story.printSecondActOutro();
             
-            player.chooseItem();
+            shop();
             
             enemies[0] = "Soldado da Resistência";
-            enemies[1] = "Agente da Irmandade";
-            enemies[2] = "Sparky";
+            enemies[1] = "Agente da Insurreição";
+            enemies[2] = "Sparky, o melhor amigo do homem";
             
             player.hp = player.maxHp;
             
@@ -150,7 +151,7 @@ public class GameLogic {
             
             Story.printThirdActOutro();
             
-            player.chooseItem();
+            shop();
             
             enemies[0] = "Carnotauro Esqueletal";
             enemies[1] = "Hecatônquiro";
@@ -218,7 +219,7 @@ public class GameLogic {
         if(input == 1) {
             //Lore do NPC
             clearConsole();
-            System.out.println("illegal activities");
+            System.out.println("什麼？不管那是什麼語言，我都不會說。就買我的東西吧。");
             anythingToContinue();
             shop();
             
@@ -269,7 +270,7 @@ public class GameLogic {
     //Método para criar uma batalha aleatória
     public static void randomBattle() {
         clearConsole();
-        printHeading("Você foi emboscado por um ser perturbado. Você deve lutar!!");
+        printHeading("Você foi emboscado por um ser hostil. Você deve lutar!!");
         anythingToContinue();
         
         //Criando inimigo novo
@@ -377,7 +378,6 @@ public class GameLogic {
                     printHeading("Forças divinas te previnem de fugir dessa batalha!!");
                     anythingToContinue();
                 }
-                
             }
         }
     }

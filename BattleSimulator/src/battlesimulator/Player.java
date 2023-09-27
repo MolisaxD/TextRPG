@@ -17,8 +17,8 @@ public class Player extends Character {
     public int numAtkUpgrades, numDefUpgrades;
     
     
-    public String[] atkUpgrades = {"Boomerang", "Trompa de Caça", "Vela Santa", "Dente de Dragão"};
-    public String[] defUpgrades = {"Armadura de Ossos", "Cota de Malha", "Pergaminho Sagrado", "União"};
+    public String[] atkUpgrades = {"Boomerang (+1 ATK)", "Trompa de Caça (+2 ATK)", "Vela Santa (+3 ATK)", "Dente de Dragão (+4 ATK)"};
+    public String[] defUpgrades = {"Elmo de Ossos (+1 DEF)", "Cota de Malha (+2 DEF)", "Pergaminho Sagrado (+3 DEF)", "União (+4 DEF)"};
 
     public Player(String name) {
         super(name, 100, 0);
@@ -34,12 +34,12 @@ public class Player extends Character {
 
     @Override
     public int attack() {
-        return (int) (Math.random() * (xp/4 + numAtkUpgrades * 3 + 3) + xp/10 + numAtkUpgrades * 2 + numDefUpgrades + 1);
+        return (int) (Math.random() * (xp/5 + numAtkUpgrades * 3 + 3) + xp/10 + numAtkUpgrades * 2 + numAtkUpgrades + 1);
     }
 
     @Override
     public int defend() {
-        return (int) (Math.random() * (xp/4 + numDefUpgrades * 3 + 3) + xp/10 + numDefUpgrades * 2 + numDefUpgrades + 1);
+        return (int) (Math.random() * (xp/5 + numDefUpgrades * 3 + 3) + xp/10 + numDefUpgrades * 2 + numDefUpgrades + 1);
     }
 
     public void chooseItem() {
