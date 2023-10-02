@@ -38,14 +38,15 @@ public class Story {
         GameLogic.clearConsole();
         GameLogic.printHeading("ATO I - Completo");
         System.out.println("Você sobreviveu com sucesso à floresta Pindorama e suas criaturas, e está pronto para cruzar as Colinas de Gorjala. Não desanime ainda, sua jornada acabou de começar!\n"
-                + "Enquanto isso, rumores estão se espalhando sobre uma possível insurreição do povo de Jinbú, insatisfeitos com suas condições de vida. Por sorte, o objetivo de sua missão já se encontra lá.");
+                + "Enquanto isso, rumores estão se espalhando sobre uma possível insurreição do povo de Jinbú, insatisfeitos com suas condições de vida. Por sorte, o objetivo de sua missão já \n"
+                + "se encontra lá.");
         GameLogic.anythingToContinue();
     }
     
     public static void printSecondActIntro() {
         GameLogic.clearConsole();
         GameLogic.printHeading("ATO II - Introdução");
-        System.out.println("Bem-vindo às Colinas de Gorjala! Dizem que a colina principal foi formada com a queda de um gigante de pedra colossal que viveu séculos atrás.\n"
+        System.out.println(" Bem-vindo às Colinas de Gorjala! Dizem que a colina principal foi formada com a queda de um gigante de pedra colossal que viveu séculos atrás.\n"
                 + " Infelizmente, os habitantes da região não estão tão felizes com a sua chegada. Além de ar fresco, vista bonita e céu limpo a previsão é de que também teremos\n"
                 + " Vermes da Terra, Golens de Pedra e Águias Gigantes para interromper sua aventura.");
         GameLogic.anythingToContinue();
@@ -54,15 +55,15 @@ public class Story {
     public static void printSecondActOutro() {
         GameLogic.clearConsole();
         GameLogic.printHeading("ATO II - Completo");
-        System.out.println("Parabéns, você conseguiu passar pelos monstros das Colinas de Gorjala e agora seu objetivo está bem diante de você: A cidade de Jinbú, vista do alto da colina,"
-                + "se encontra logo em frente. Você sente que já aprendeu bastante em sua aventura e está preparado para o que está por vir.");
+        System.out.println("Parabéns, você conseguiu passar pelos monstros das Colinas de Gorjala e agora seu objetivo está bem diante de você: A cidade de Jinbú, vista do alto da colina,\n"
+                + " se encontra logo em frente. Você sente que já aprendeu bastante em sua aventura e está preparado para o que está por vir.");
         GameLogic.anythingToContinue();
     }
     
     public static void printThirdActIntro() {
         GameLogic.clearConsole();
         GameLogic.printHeading("ATO III - Introdução");
-        System.out.println("Cidade de Jinbú, uma nação de ordem e progresso. Ao contrário dos outros territórios colonizados por humanos, essa cidade opera de maneira industrial.\n"
+        System.out.println(" Cidade de Jinbú, uma nação de ordem e progresso. Ao contrário dos outros territórios colonizados por humanos, essa cidade opera de maneira industrial.\n"
                 + "Mecânica, ciência e engenharia são priorizadas acima de outros valores, o que é perceptível pelo porte e design de suas edificações.\n"
                 + "Prédios altos com alta densidade de moradores quase bloqueiam a vista do céu. Serviços públicos são impulsionados por mecanismos gigantes, repletos de engrenagens e fiação.\n "
                 + "A fumaça espalha um odor tóxico, que contamina os pulmões dos trabalhadores à serviço dos Emblemas. O trabalho forçado e condições insalubres estão causando\n"
@@ -74,7 +75,7 @@ public class Story {
     public static void printThirdActOutro() {
         GameLogic.clearConsole();
         GameLogic.printHeading("ATO III Completo");
-        System.out.println("Você decide poupar a vida de seu último inimigo para interrogá-lo sobre a localização de Nigromante. Está claro que a sua presença já causa terror nos locais,\n "
+        System.out.println(" Você decide poupar a vida de seu último inimigo para interrogá-lo sobre a localização de Nigromante. Está claro que a sua presença já causa terror nos locais,\n "
                 + "que se trancaram dentro de suas casas, deixando-o sozinho com você. O ser inferior que antes demonstrava hostilidade agora oferece uma proposta:\n"
                 + "'Você está certo, não existe chance dessa insurreição acontecer, eu posso convencer meus amigos... Por favor não me mate, eu tenho uma família..'\n"
                 + "Com a informação que você precisava em mãos, você não vê motivo para matar este indivíduo, mas o faz do mesmo jeito para desmotivar os insurgentes.\n"
@@ -85,37 +86,28 @@ public class Story {
     public static void printFourthActIntro() {
         GameLogic.clearConsole();
         GameLogic.printHeading("ATO IV Introdução");
-        System.out.println("Você se dirige ao local informado no interrogamento. Trata-se de um pátio no centro de uma vila, aberto à luz da Lua. De cara parece apenas um pátio comum,\n"
+        System.out.println(" Você se dirige ao local informado no interrogamento. Trata-se de um pátio no centro de uma vila, aberto à luz da Lua. De cara parece apenas um pátio comum,\n"
                 + "porém com a informação que você recebeu, você puxa uma alavanca que revela um vão de escadas em espiral no centro. Você sente um cheiro fétido de sangue e\n"
-                + "um calafrio em sua espinha subir ");
+                + "um calafrio subir em sua espinha. Nigromante é conhecida pelas suas artes místicas obscuras, o que a permitem que invoque servos da escuridão para impedi-lo.\n"
+                + "Você desce o vão de escadas, chegando a um local mais parecido com um abrigo nuclear do que uma oficina. Os servos de Nigromante se agitam... E mais profundamente\n"
+                + "... a própria Nigromante ");
         GameLogic.anythingToContinue();
     }
     
     public static void printFourthActOutro() {
         GameLogic.clearConsole();
         GameLogic.printHeading("ATO IV Completo");
-        System.out.println("");
+        System.out.println("Com seu último suspiro, Nigromante deixa este mundo, porém não sem antes amaldiçoá-lo... Seus servos ainda estão espalhados pelo mundo, "
+                + "sua influência alastrando efeitos na população, ainda sem conhecimento do que acaba de se passar.. O futuro parece... brilhante?\n"
+                + "A Resistência perde suas esperanças na possibilidade de uma rebelião e as engrenagens da indústria continuarão girando... ");
         GameLogic.anythingToContinue();
     }
     
-        public static void printFifthActIntro() {
+    public static void printEnd(Player player) {
         GameLogic.clearConsole();
-        GameLogic.printHeading("ATO V Introdução");
-        System.out.println("");
-        GameLogic.anythingToContinue();
-    }
-    
-    public static void printFifthActOutro() {
-        GameLogic.clearConsole();
-        GameLogic.printHeading("ATO V Completo");
-        System.out.println("");
-        GameLogic.anythingToContinue();
-    }
-    
-    public static void printEnd() {
-        GameLogic.clearConsole();
-        GameLogic.printHeading("Final");
-        System.out.println("");
+        GameLogic.printHeading("Epílogo");
+        System.out.println("Parabéns, " + player + ", você derrotou as forças do mal e garantiu seu estatuto social junto à elite de dragões! Sua jornada com certeza irá inspirar novos aventureiros a "
+                + "continuar a opressão das classes baixas de trabalhadores para defender o sistema opressor criado pelos Emblemas!");
         GameLogic.anythingToContinue();
     }
 }

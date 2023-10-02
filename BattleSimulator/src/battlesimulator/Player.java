@@ -34,12 +34,16 @@ public class Player extends Character {
 
     @Override
     public int attack() {
-        return (int) (Math.random() * (xp/5 + numAtkUpgrades * 3 + 3) + xp/10 + numAtkUpgrades * 2 + numAtkUpgrades + 1);
+        int dmgCalc = (int) (Math.random() * 2 + (numAtkUpgrades + 2) + 1);
+        if(dmgCalc <= 0) {
+            dmgCalc = 1;
+        }
+        return dmgCalc;
     }
 
     @Override
     public int defend() {
-        return (int) (Math.random() * (xp/5 + numDefUpgrades * 3 + 3) + xp/10 + numDefUpgrades * 2 + numDefUpgrades + 1);
+        return (int) (Math.random() * 2 + (numDefUpgrades + 2) + 1);
     }
 
     public void chooseItem() {

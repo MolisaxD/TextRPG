@@ -160,13 +160,10 @@ public class GameLogic {
             player.hp = player.maxHp;
             
             Story.printFourthActIntro();
-        } else if(player .xp >= 200 && act == 4) {
-            act = 5;
-            place = 3;
             
             //Batalha final
-            //finalBattle();
-        }
+            finalBattle();
+        } 
     }
     
     //Método para calcular um encontro aleatório
@@ -181,7 +178,7 @@ public class GameLogic {
         //Checar o ato atual
         checkAct();
         //Checar se é o último ato
-        if(act != 4) {
+        if(act != 5) {
             randomEncounter();
         }
     }
@@ -227,13 +224,13 @@ public class GameLogic {
             //Loja
             clearConsole();
             //Calcular preços
-            int priceAtk = (int) (Math.random() * (10 * player.numAtkUpgrades + 1));
-            int priceDef = (int) (Math.random() * (10 * player.numDefUpgrades + 1));
+            int priceAtk = (int) (Math.random() * (10 * player.numAtkUpgrades + 1) + 1);
+            int priceDef = (int) (Math.random() * (10 * player.numDefUpgrades + 1) + 1);
             //Menu da loja
             printHeading("Itens disponíveis:");
             System.out.println("Ouro: " + player.gold);
             System.out.println("1) Melhoria de ataque - " + player.atkUpgrades[player.numAtkUpgrades] + ": " + priceAtk + " ouro");
-            System.out.println("2) Melhoria de defesa - " + player.defUpgrades[player.numDefUpgrades] + ": " + priceDef + "ouro");
+            System.out.println("2) Melhoria de defesa - " + player.defUpgrades[player.numDefUpgrades] + ": " + priceDef + " ouro");
             printSeparator(20);
             input = readInt("->", 2);
             
@@ -243,10 +240,9 @@ public class GameLogic {
                     anythingToContinue();
                     shop();
                 } else {
-                    System.out.println("Você comprou " + player.atkUpgrades[player.numAtkUpgrades] + "! + 2 ATK");
+                    System.out.println("Você comprou " + player.atkUpgrades[player.numAtkUpgrades]);
                     anythingToContinue();
                     player.numAtkUpgrades++;
-                    shop();
                 }
             } else {
                 if(priceDef > player.gold) {
@@ -254,10 +250,9 @@ public class GameLogic {
                     anythingToContinue();
                     shop();
                 } else {
-                    System.out.println("Você comprou " + player.defUpgrades[player.numDefUpgrades] + "! + 2 DEF");
+                    System.out.println("Você comprou " + player.defUpgrades[player.numDefUpgrades]);
                     anythingToContinue();
                     player.numDefUpgrades++;
-                    shop();
                 }
             }
         } else {
@@ -299,7 +294,7 @@ public class GameLogic {
                 
                 if(dmgTook < 0) {
                     //Caso o jogador defenda muito bem, reflete o dano
-                    dmg -= dmgTook/2;
+                    dmg += dmgTook/2;
                     dmgTook = 0;
                 }
                 
@@ -398,6 +393,14 @@ public class GameLogic {
         clearConsole();
         printHeading("Você morreu...");
         printHeading("Você ganhou " + player.xp + " de experiência em sua jornada! Tente novamente!");
+        isRunning = false;
+    }
+    
+    //Batalha final
+    public static void finalBattle() {
+        battle(new Enemy("Nigromante", 300));
+        //Fim do jogo
+        Story.printEnd(player);
         isRunning = false;
     }
     
