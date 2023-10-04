@@ -223,6 +223,8 @@ public class GameLogic {
         printSeparator(20);
         System.out.println("# de poções de stamina: " + player.stPots);
         printSeparator(20);
+        System.out.println("Inventário: " + player.inv + "/10");
+        printSeparator(20);
         
         if(player.numAtkUpgrades > 0) {
             System.out.println("Armas: " + player.atkUpgrades[player.numAtkUpgrades - 1]);
