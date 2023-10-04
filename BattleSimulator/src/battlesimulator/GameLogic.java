@@ -308,6 +308,7 @@ public class GameLogic {
             clearConsole();
             printHeading(enemy.name + "\nHP: " + enemy.hp + "/" + enemy.maxHp);
             printHeading(player.name + "\nHP: " + player.hp + "/" + player.maxHp);
+            printHeading(player.name + "\nST: " + player.stamina + "/" + player.maxStamina);
             System.out.println("Escolha uma ação:");
             printSeparator(20);
             System.out.println("1) Lutar");
