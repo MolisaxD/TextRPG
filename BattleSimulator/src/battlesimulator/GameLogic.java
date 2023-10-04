@@ -155,6 +155,7 @@ public class GameLogic {
             
             //Curar o jogador
             player.hp = player.maxHp;
+            player.stamina = player.maxStamina;
             
             //História
             Story.printSecondActIntro();
@@ -254,8 +255,8 @@ public class GameLogic {
             //Loja
             clearConsole();
             //Calcular preços
-            int priceAtk = (int) (Math.random() * (10 * player.numAtkUpgrades + 1) + 1);
-            int priceDef = (int) (Math.random() * (10 * player.numDefUpgrades + 1) + 1);
+            int priceAtk = (int) ((8 * player.numAtkUpgrades + 1) + 1);
+            int priceDef = (int) ((8 * player.numDefUpgrades + 1) + 1);
             //Menu da loja
             printHeading("Itens disponíveis:");
             System.out.println("Ouro: " + player.gold);
@@ -266,6 +267,7 @@ public class GameLogic {
             
             if(input == 1) {
                 if(priceAtk > player.gold) {
+                    player.gold -= priceAtk;
                     System.out.println("Você não possui ouro suficiente para comprar este item.");
                     anythingToContinue();
                     shop();
@@ -273,6 +275,7 @@ public class GameLogic {
                     System.out.println("Você comprou " + player.atkUpgrades[player.numAtkUpgrades]);
                     anythingToContinue();
                     player.numAtkUpgrades++;
+                    shop();
                 }
             } else {
                 if(priceDef > player.gold) {
@@ -280,9 +283,11 @@ public class GameLogic {
                     anythingToContinue();
                     shop();
                 } else {
+                    player.gold -= priceDef;
                     System.out.println("Você comprou " + player.defUpgrades[player.numDefUpgrades]);
                     anythingToContinue();
                     player.numDefUpgrades++;
+                    shop();
                 }
             }
         } else {
