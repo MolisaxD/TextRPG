@@ -39,7 +39,7 @@ public class Player extends Character {
 
     @Override
     public int attack() {
-        int dmgCalc = (int) (Math.random() * 2 + (numAtkUpgrades + 2) + 1);
+        int dmgCalc = (int) (Math.random() * 2 + (numAtkUpgrades + 2) + 2);
         if(dmgCalc <= 0) {
             dmgCalc = 1;
         }
