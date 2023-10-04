@@ -262,8 +262,9 @@ public class GameLogic {
             System.out.println("Ouro: " + player.gold);
             System.out.println("1) Melhoria de ataque - " + player.atkUpgrades[player.numAtkUpgrades] + ": " + priceAtk + " ouro");
             System.out.println("2) Melhoria de defesa - " + player.defUpgrades[player.numDefUpgrades] + ": " + priceDef + " ouro");
+            System.out.println("3) Voltar");
             printSeparator(20);
-            input = readInt("->", 2);
+            input = readInt("->", 3);
             
             if(input == 1) {
                 if(priceAtk > player.gold) {
@@ -277,7 +278,7 @@ public class GameLogic {
                     player.numAtkUpgrades++;
                     shop();
                 }
-            } else {
+            } else if (input == 2) {
                 if(priceDef > player.gold) {
                     System.out.println("Você não possui ouro suficiente para comprar este item.");
                     anythingToContinue();
@@ -289,6 +290,8 @@ public class GameLogic {
                     player.numDefUpgrades++;
                     shop();
                 }
+            } else {
+                shop();
             }
         } else {
             //Sair
