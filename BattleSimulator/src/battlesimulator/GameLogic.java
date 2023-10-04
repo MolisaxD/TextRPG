@@ -381,6 +381,7 @@ public class GameLogic {
                         if((double) (Math.random()) < 0.3) {
                         player.stPots++;
                         player.inv++;
+                            System.out.println("O seu inimigo deixou cair uma poção de stamina! Inventário: " + (player.hpPots + player.stPots) + "/6");
                         } 
                     }
                     
