@@ -376,7 +376,7 @@ public class GameLogic {
                     System.out.println("Você ganhou " + enemy.xp + " pontos de experiência.");
                     
                     //Drops aleatórios - ouro
-                    int goldEarned = (int) (Math.random() * enemy.xp);
+                    int goldEarned = (int) (Math.random() * enemy.xp + 1);
                     player.gold += goldEarned;
                     System.out.println("Você coletou " + goldEarned + " moedas do inimigo.");
                     
