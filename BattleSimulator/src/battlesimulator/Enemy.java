@@ -21,12 +21,12 @@ public class Enemy extends Character {
 
     @Override
     public int attack() {
-        return (int) (Math.random() * (playerXp/4 + 8) + xp/4 + 3);
+        return (int) (Math.random() * (playerXp/5 + 8) + xp/5 + 3);
     }
 
     @Override
     public int defend() {
-        return (int) (Math.random() * (playerXp/4 + 1) + xp/4 + 3);
+        return (int) (Math.random() * (playerXp/5 + 1) + xp/5 + 3);
     }
     
 }
