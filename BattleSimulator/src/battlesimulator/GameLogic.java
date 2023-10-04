@@ -395,7 +395,7 @@ public class GameLogic {
                 clearConsole();
                 //Escolher entre poção de vida e stamina
                 System.out.println("1) Poção de Vida (+100 HP)");
-                System.out.println("2) Poção de Stamina (+100 ST");
+                System.out.println("2) Poção de Stamina (+100 ST)");
                 
                 input = readInt("->", 2);
                 
