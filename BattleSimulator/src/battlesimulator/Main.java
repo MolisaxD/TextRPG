@@ -5,6 +5,8 @@
  */
 package battlesimulator;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author mborges
@@ -16,6 +18,7 @@ public class Main {
      */
     public static void main(String[] args) {
         GameLogic.startGame();
+       
     }
     
 }

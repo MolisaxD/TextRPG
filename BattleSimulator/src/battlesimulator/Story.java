@@ -106,7 +106,7 @@ public class Story {
     public static void printEnd(Player player) {
         GameLogic.clearConsole();
         GameLogic.printHeading("Epílogo");
-        System.out.println("Parabéns, " + player + ", você derrotou as forças do mal e garantiu seu estatuto social junto à elite de dragões! Sua jornada com certeza irá inspirar novos aventureiros a "
+        System.out.println("Parabéns, " + player + "! Você derrotou as forças do mal e garantiu seu estatuto social junto à elite de dragões! Sua jornada com certeza irá inspirar novos aventureiros a "
                 + "continuar a opressão das classes baixas de trabalhadores para defender o sistema opressor criado pelos Emblemas!");
         GameLogic.anythingToContinue();
     }

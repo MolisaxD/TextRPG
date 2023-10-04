@@ -12,7 +12,9 @@ package battlesimulator;
 public class Player extends Character {
     
     //Atributos extra
-    public int gold, pots;
+    public int maxStamina, stamina, gold, hpPots, stPots;
+    //Inventário
+    public int inv;
     //Itens
     public int numAtkUpgrades, numDefUpgrades;
     
@@ -26,8 +28,11 @@ public class Player extends Character {
         this.numAtkUpgrades = 0;
         this.numDefUpgrades = 0;
         
+        this.maxStamina = 100;
+        this.stamina = 100;
         this.gold = 5;
-        this.pots = 1;
+        this.hpPots = 1;
+        this.stPots = 1;
         
         chooseItem();
     }

@@ -97,6 +97,27 @@ public class GameLogic {
             nameSet = true;
         } while (!nameSet);
         
+        clearConsole();
+        printHeading("Escolha uma classe: ");
+        System.out.println("1) Jurado da Glória: Começa com uma melhoria de ataque extra.");
+        System.out.println("2) Jurado da Redenção: Começa com 50 pontos de vida a mais.");
+        System.out.println("3) Devoto dos Deuses: Começa com 50 pontos de stamina a mais.");
+        System.out.println("4) Perjuro: Começa sem atributos extra.");
+        int input = readInt("->", 4);
+        
+        switch(input) {
+            case 1: 
+                player.numAtkUpgrades++;
+                System.out.println("Você escolheu o caminho da glória e recebeu um " + player.atkUpgrades[0] + "!");
+            case 2: 
+                player.maxHp += 50;
+                System.out.println("Você escolheu o caminho da redenção e recebeu +50 HP!");
+            case 3:
+                player.maxStamina += 50;
+                System.out.println("Você  escolheu o caminho da devoção e recebeu +50 ST!");
+            case 4:
+                System.out.println("Você decidiu forjar o seu próprio destino, sem o zelo dos deuses. Boa sorte!");
+        }
         
         player = new Player(name);
         
@@ -166,10 +187,8 @@ public class GameLogic {
         } 
     }
     
-    //Método para calcular um encontro aleatório
+    //Método para calcular um encontro aleatório (vou adicionar outros encontros no futuro)
     public static void randomEncounter() {
-        //Número aleatório entre 0 e o tamanho do Array de encontros 
-        //int enemy = (int) (Math.random() * enemies.length);
         randomBattle();
     }
     
@@ -190,7 +209,11 @@ public class GameLogic {
         printSeparator(20);
         System.out.println("XP: " + player.xp);
         printSeparator(20);
-        System.out.println("# de poções: " + player.pots);
+        System.out.println("Stamina: " + player.stamina);
+        printSeparator(20);
+        System.out.println("# de poções de vida: " + player.hpPots);
+        printSeparator(20);
+        System.out.println("# de poções de stamina: " + player.stPots);
         printSeparator(20);
         
         if(player.numAtkUpgrades > 0) {
@@ -287,31 +310,39 @@ public class GameLogic {
             
             //Reagir de acordo com a escolha do jogador
             if(input == 1) {
-                //Luta
-                //Calcular dano infligido e dano tomado
-                int dmg = player.attack() - enemy.defend();
-                int dmgTook = enemy.attack() - player.defend();
+                //Checar stamina
+                if(player.stamina > 0) {
+                    
+                    //Luta
+                    if(player.stamina < 10) {
+                        player.stamina = 0;
+                    } else {
+                        player.stamina -= 10;
+                    }
+                    
+                    //Calcular dano infligido e dano tomado
+                    int dmg = player.attack() - enemy.defend();
+                    int dmgTook = enemy.attack() - player.defend();
                 
-                if(dmgTook < 0) {
-                    //Caso o jogador defenda muito bem, reflete o dano
-                    dmg += dmgTook/2;
-                    dmgTook = 0;
+                    if(dmg < 0) 
+                        dmg = 0;
+                
+                    //Atualizar dados de ambos
+                    player.hp -= dmgTook;
+                    enemy.hp -= dmg;
+
+                    //Informação sobre o round atual
+                    clearConsole();
+                    printHeading("Batalha");
+                    System.out.println("Você causou " + dmg + " de dano ao inimigo " + enemy.name + ".");
+                    printSeparator(15);
+                    System.out.println("O inimigo lhe causou " + dmgTook + " de dano.");
+                    anythingToContinue();
+                } else {
+                    System.out.println("Você não possui stamina suficiente para lutar! Tome uma poção ou corra!");
+                    anythingToContinue();
                 }
-                
-                if(dmg < 0) 
-                    dmg = 0;
-                
-                //Atualizar dados de ambos
-                player.hp -= dmgTook;
-                enemy.hp -= dmg;
-                
-                //Informação sobre o round atual
-                clearConsole();
-                printHeading("Batalha");
-                System.out.println("Você causou " + dmg + " de dano ao inimigo " + enemy.name + ".");
-                printSeparator(15);
-                System.out.println("O inimigo lhe causou " + dmgTook + " de dano.");
-                anythingToContinue();
+               
                 
                 //Checar se a batalha terminou (hp = 0)
                 if(player.hp <= 0) {
@@ -323,10 +354,25 @@ public class GameLogic {
                     printHeading(enemy.name + " foi derrotado!!");
                     player.xp += enemy.xp;
                     System.out.println("Você ganhou " + enemy.xp + " pontos de experiência.");
-                    //Drops aleatórios
+                    
+                    //Drops aleatórios - ouro
                     int goldEarned = (int) (Math.random() * enemy.xp);
                     player.gold += goldEarned;
                     System.out.println("Você coletou " + goldEarned + " moedas do inimigo.");
+                    
+                    //Drops aleatórios - poções
+                    if(player.inv < 6) {
+                       if((double) (Math.random()) < 0.3) {
+                        player.hpPots++;
+                        player.inv++;
+                        }
+                        if((double) (Math.random()) < 0.3) {
+                        player.stPots++;
+                        player.inv++;
+                        } 
+                    }
+                    
+                    
                     anythingToContinue();
                     break;
                 }
@@ -334,23 +380,48 @@ public class GameLogic {
             } else if(input == 2) {
                 //Usar poção
                 clearConsole();
-                if(player.pots > 0 && player.hp < player.maxHp) {
+                //Escolher entre poção de vida e stamina
+                System.out.println("1) Poção de Vida (+100 HP)");
+                System.out.println("2) Poção de Stamina (+100 ST");
+                
+                input = readInt("->", 2);
+                
+                //Poção de vida
+                if(input == 1) {
+                    if(player.hpPots > 0 && player.hp < player.maxHp) {
                     //Jogador pode usar a poção
                     player.hp = player.maxHp;
                     clearConsole();
+                    
                     printHeading("Você tomou uma poção mágica. Sua vida foi restaurada para " + player.maxHp + "!");
                     anythingToContinue();
-                } else { 
+                    } else { 
                     //Jogador não pode usar a poção
-                    System.out.println("Você não possui mais poções ou já está de vida cheia.");
+                    System.out.println("Você não possui mais poções de vida ou já está de vida cheia.");
                     anythingToContinue();
-                }
+                    }
+                //Poção de stamina
+                } else {
+                    if(player.stPots > 0 && player.stamina < player.maxStamina) {
+                        //Jogador pode usar a poção
+                        player.stamina = player.maxStamina;
+                        clearConsole();
+                        
+                        printHeading("Você tomou uma poção mágica. Sua stamina foi restaurada para " + player.maxStamina + "!");
+                        anythingToContinue();
+                    } else {
+                        //Jogador não pode usar a poção
+                        System.out.println("Você não possui poções de stamina ou já está de fôlego cheio.");
+                        anythingToContinue();
+                    }
                 
+            }
+                    
             } else {
                 //Correr
                 clearConsole();
                 //Checar se não é o último ato (não pode correr)
-                if (act != 5) {
+                if (act != 4) {
                     clearConsole();
                     //Chance de escape
                     if(Math.random() * 10 + 1 <= 5.0) {
@@ -397,6 +468,7 @@ public class GameLogic {
     }
     
     //Batalha final
+    //TODO fazer uma batalha mais complexa no futuro
     public static void finalBattle() {
         battle(new Enemy("Nigromante", 300));
         //Fim do jogo
