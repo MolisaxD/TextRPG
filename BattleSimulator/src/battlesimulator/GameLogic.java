@@ -112,16 +112,20 @@ public class GameLogic {
             case 1: 
                 player.numAtkUpgrades++;
                 System.out.println("Você escolheu o caminho da glória e recebeu um " + player.atkUpgrades[0] + "!");
+                anythingToContinue();
             case 2: 
                 player.maxHp += 50;
                 player.hp = 150;
                 System.out.println("Você escolheu o caminho da redenção e recebeu +50 HP!");
+                anythingToContinue();
             case 3:
                 player.maxStamina += 50;
                 player.stamina = 150;
                 System.out.println("Você  escolheu o caminho da devoção e recebeu +50 ST!");
+                anythingToContinue();
             case 4:
                 System.out.println("Você decidiu forjar o seu próprio destino, sem o zelo dos deuses. Boa sorte!");
+                anythingToContinue();
         }
         
         Story.printFirstActIntro();
