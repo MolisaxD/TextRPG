@@ -200,7 +200,7 @@ public class GameLogic {
         //Checar o ato atual
         checkAct();
         //Checar se é o último ato
-        if(act != 5) {
+        if(act != 4 && ) {
             randomEncounter();
         }
     }
@@ -326,7 +326,11 @@ public class GameLogic {
                     //Calcular dano infligido e dano tomado
                     int dmg = player.attack() - enemy.defend();
                     int dmgTook = enemy.attack() - player.defend();
-                
+
+                    //Refletir o dano se defender muito bem
+                    if(dmgTook < 0) 
+                        dmg += dmgTook/2;
+                    
                     if(dmg < 0) 
                         dmg = 0;
                 
