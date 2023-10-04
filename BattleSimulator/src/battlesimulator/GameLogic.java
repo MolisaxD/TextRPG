@@ -97,6 +97,9 @@ public class GameLogic {
             nameSet = true;
         } while (!nameSet);
         
+        player = new Player(name);
+        
+        
         clearConsole();
         printHeading("Escolha uma classe: ");
         System.out.println("1) Jurado da Glória: Começa com uma melhoria de ataque extra.");
@@ -118,8 +121,6 @@ public class GameLogic {
             case 4:
                 System.out.println("Você decidiu forjar o seu próprio destino, sem o zelo dos deuses. Boa sorte!");
         }
-        
-        player = new Player(name);
         
         Story.printFirstActIntro();
         
